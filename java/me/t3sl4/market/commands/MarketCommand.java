@@ -37,11 +37,10 @@ public class MarketCommand implements CommandExecutor {
    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
       int i;
       int n;
-      Player p = (Player) sender;
-      String uuid = p.getUniqueId().toString();
       if (cmd.getName().equalsIgnoreCase("market")) {
          if (args.length == 0) {
-            if (p instanceof Player) {
+            if (sender instanceof Player) {
+               Player p = (Player) sender;
                if (p.isOp() || p.hasPermission("t3sl4market.general")) {
                   for (String s : MessageUtil.INFO) {
                      p.sendMessage(s);
@@ -57,6 +56,8 @@ public class MarketCommand implements CommandExecutor {
          } else {
             if (args[0].equalsIgnoreCase("kur")) {
                if (sender instanceof Player) {
+                  Player p = (Player) sender;
+                  String uuid = p.getUniqueId().toString();
                   if (p.isOp() || p.hasPermission("t3sl4market.kur")) {
                      if (args.length != 2) {
                         p.sendMessage(MessageUtil.KUR_KULLANIM);
@@ -102,6 +103,7 @@ public class MarketCommand implements CommandExecutor {
                }
             } else if (args[0].equalsIgnoreCase("aç")) {
                if (sender instanceof Player) {
+                  Player p = (Player) sender;
                   if (p.isOp() || p.hasPermission("t3sl4market.ac")) {
                      if (args.length == 1) {
                         if (MarketUtil.hasMarket(p)) {
@@ -167,6 +169,8 @@ public class MarketCommand implements CommandExecutor {
                }
             } else if (args[0].equalsIgnoreCase("ekle")) {
                if (sender instanceof Player) {
+                  Player p = (Player) sender;
+                  String uuid = p.getUniqueId().toString();
                   if (p.isOp() || p.hasPermission("t3sl4market.ekle")) {
                      if (args.length != 3) {
                         p.sendMessage(MessageUtil.EKLE_KULLANIM);
@@ -285,6 +289,7 @@ public class MarketCommand implements CommandExecutor {
                }
             } else if (args[0].equalsIgnoreCase("kaldır")) {
                if (sender instanceof Player) {
+                  Player p = (Player) sender;
                   if (p.isOp() || p.hasPermission("t3sl4market.kaldir")) {
                      if (args.length != 2) {
                         p.sendMessage(MessageUtil.KALDIRMA_KULLANIM);
@@ -414,6 +419,7 @@ public class MarketCommand implements CommandExecutor {
                }
             } else if (args[0].equalsIgnoreCase("ortaklik")) {
                if (sender instanceof Player) {
+                  Player p = (Player) sender;
                   if (p.isOp() || p.hasPermission("t3sl4market.ortaklik")) {
                      if (MessageUtil.ORTAKLIK) {
                         if (!MarketUtil.hasMarket(p)) {
@@ -446,6 +452,7 @@ public class MarketCommand implements CommandExecutor {
                }
             } else if (args[0].equalsIgnoreCase("ortakekle")) {
                if (sender instanceof Player) {
+                  Player p = (Player) sender;
                   if (p.isOp() || p.hasPermission("t3sl4market.ortakekle")) {
                      if (MessageUtil.ORTAKLIK) {
                         if (!MarketUtil.hasMarket(p)) {
@@ -507,6 +514,7 @@ public class MarketCommand implements CommandExecutor {
                }
             } else if (args[0].equalsIgnoreCase("ortaksil")) {
                if (sender instanceof Player) {
+                  Player p = (Player) sender;
                   if (p.isOp() || p.hasPermission("t3sl4market.ortaksil")) {
                      if (MessageUtil.ORTAKLIK) {
                         if (!MarketUtil.hasMarket(p)) {
@@ -564,6 +572,7 @@ public class MarketCommand implements CommandExecutor {
                }
             } else if (args[0].equalsIgnoreCase("ortaklar")) {
                if (sender instanceof Player) {
+                  Player p = (Player) sender;
                   if (p.isOp() || p.hasPermission("t3sl4market.ortaklar")) {
                      if (MessageUtil.ORTAKLIK) {
                         //if(args.length != 0) {
@@ -599,6 +608,7 @@ public class MarketCommand implements CommandExecutor {
                }
             } else if (args[0].equalsIgnoreCase("ayrıl")) {
                if (sender instanceof Player) {
+                  Player p = (Player) sender;
                   if (p.isOp() || p.hasPermission("t3sl4market.ayril")) {
                      if (MessageUtil.ORTAKLIK) {
                         if(args.length != 0) {
@@ -644,10 +654,11 @@ public class MarketCommand implements CommandExecutor {
                      p.sendMessage(MessageUtil.PERMERROR);
                   }
                } else {
-                  p.sendMessage(MessageUtil.CONSOLE);
+                  sender.sendMessage(MessageUtil.CONSOLE);
                }
             } else if (args[0].equalsIgnoreCase("ortaklikd")) {
                if(sender instanceof Player) {
+                  Player p = (Player) sender;
                   if(p.isOp() || p.hasPermission("t3sl4market.ortaklikd")) {
                      if(args.length !=2) {
                         p.sendMessage(MessageUtil.ORTAKLIKD_KULLANIM);
@@ -679,19 +690,29 @@ public class MarketCommand implements CommandExecutor {
                   sender.sendMessage(MessageUtil.CONSOLE);
                }
             } else if (args[0].equalsIgnoreCase("reload")) {
-               if (sender.isOp() || sender.hasPermission("t3sl4market.reload")) {
-                  if(args.length != 0) {
-                     p.sendMessage(MessageUtil.RELOAD_KULLANIM);
+               if(sender instanceof Player) {
+                  Player p = (Player) sender;
+                  if (sender.isOp() || sender.hasPermission("t3sl4market.reload")) {
+                     //if(args.length != 0) {
+                        //p.sendMessage(MessageUtil.RELOAD_KULLANIM);
+                        //return true;
+                     //}
+                     this.manager.reloadConfig();
+                     this.manager.reloadItemConfig();
+                     MessageUtil.loadMessages();
+                     new TranslationMapping(T3SL4Market.getPlugin());
+                     p.sendMessage(MessageUtil.RELOAD);
                      return true;
+                  } else {
+                     sender.sendMessage(MessageUtil.PERMERROR);
                   }
+               } else {
                   this.manager.reloadConfig();
                   this.manager.reloadItemConfig();
                   MessageUtil.loadMessages();
                   new TranslationMapping(T3SL4Market.getPlugin());
-                  p.sendMessage(MessageUtil.RELOAD);
+                  sender.sendMessage(MessageUtil.RELOAD);
                   return true;
-               } else {
-                  sender.sendMessage(MessageUtil.PERMERROR);
                }
             }
          }
