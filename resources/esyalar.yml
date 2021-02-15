@@ -1,0 +1,712 @@
+templates:
+  colors:    
+    15: Siyah
+    14: Kırmızı
+    13: Yeşil
+    12: Kahverengi
+    11: Mavi
+    10: Mor
+    9: Turkuaz
+    8: Gümüş
+    7: Gri
+    6: Pembe
+    5: Açık Yeşil
+    4: Sarı
+    3: Açık Mavi
+    2: Eflatun
+    1: Turuncu
+    0: Beyaz   
+  colorsinverted:
+    0: Siyah
+    1: Kırmızı
+    2: Yeşil
+    3: Kahverengi
+    4: Mavi
+    5: Mor
+    6: Turkuaz
+    7: Gümüş
+    8: Gri
+    9: Pembe
+    10: Açık Yeşil
+    11: Sarı
+    12: Açık Mavi
+    13: Eflatun
+    14: Turuncu
+    15: Beyaz
+  slabs:  
+    0: Taş Basamak
+    1: Kumtaşı Basamak
+    2: Tahta Basamak
+    3: Kırıktaş Basamak
+    4: Tuğla Basamak
+    5: Taş Tuğla Basamak
+    6: Nether Tuğlası Basamağı
+    7: Kuvars Basamağı
+  sandstones:
+    0: 
+    1: Keskin
+    2: Düz
+  potions:
+    UNCRAFTABLE: Boş
+    JUMP: Zıplama
+    SPEED: Hız
+    INSTANT_HEAL: Anında İyileştirme
+    HEAL: İyileştirme
+    INSTANT_DAMAGE: Anında Hasar
+    HARM: Hasar
+    REGEN: Rejenerasyon
+mapping:
+  STONE: 
+    general: .
+    types:
+      0: Taş
+      1: Granit
+      2: Düz Granit
+      3: Diyorit
+      4: Cilalı Diyorit
+      5: Andezit
+      6: Cilalı Andezit
+  DIRT: 
+    general: .
+    types:
+      0: Toprak
+      1: Çorak Toprak
+      2: Podzol
+  COBBLESTONE: Kırıktaş
+  SAPLING: 
+    general: Fidanı
+    types:
+      0: Meşe
+      1: Ladin
+      2: Huş
+      3: Orman
+      4: Akasya
+      5: Büyük Meşe
+  WOOD:    
+    general: Tahtası
+    types:
+      0: Meşe Ağacı
+      1: Ladin
+      2: Hus Ağacı
+      3: Orman Ağacı
+      4: Akasya Ağacı
+      5: Koyu Meşe Odun
+      
+  SAND:
+    general: Kum
+    types:
+      0: 
+      1: Kızıl
+  LEAVES:
+    general: Yaprakları
+    types:
+      0: Meşe
+      1: Ladin
+      2: Huş
+      3: Orman Ağacı   
+  SANDSTONE:
+    general: Kumtaşı
+    template: sandstones
+  RED_SANDSTONE: 
+    general: Kızıl Kumtaşı
+    template: sandstones
+  GRASS: Çimen
+  GRAVEL: Çakıl
+  BRICK: Tuğla
+  MYCEL: Miselyum
+  BEACON: Fener
+  BUCKET: Kova
+  PAPER: Kağıt
+  BOOK: Kitap
+  BONE: Kemik
+  BOOKSHELF: Kitaplık
+  OBSIDIAN: Obsidyen
+  WEB: Örümcek Ağı
+  BOW: Yay
+  ARROW: Ok
+  BEDROCK: Katman Kayası
+  GOLD_ORE: Altın Cevheri
+  IRON_ORE: Demir Cevheri
+  COAL_ORE: Kömür Cevheri
+  SPONGE: 
+    general: Sünger
+    types:
+      0: 
+      1: Islak
+  LAPIS_ORE: Lapis Lazuli Cevheri
+  DIAMOND: Elmas
+  ICE: Buz
+  CLAY: Kil
+  PUMPKIN: Balkabağı
+  LAPIS_BLOCK: Lapis Lazuli Bloğu
+  NOTE_BLOCK: Nota Bloğu
+  DISPENSER: Fırlatıcı
+  TNT: TNT
+  LEVER: Şalter
+  POWERED_RAIL: Güçlendirilmiş Ray
+  DETECTOR_RAIL: Dedektör Ray
+  PISTON_STICKY_BASE: Yapışkan Piston
+  CHEST: Sandık
+  WORKBENCH: Çalışma Masası
+  FURNACE: Fırın
+  LADDER: Merdiven
+  SNOW: Kar
+  JUKEBOX: Müzik Kutusu
+  FENCE: Çit  
+  LONG_GRASS:
+    general: .
+    types:
+      0: Çalı
+      1: Çimen
+      2: Eğreltiotu 
+  DEAD_BUSH: Ölü Bitki
+  PISTON_BASE: Piston
+  WOOL:
+    general: Yün
+    template: colors
+  YELLOW_FLOWER: Karahindiba
+  RED_ROSE: 
+    general: .
+    types:
+      0: Gelincik
+      1: Mavi Orkide
+      2: Allium
+      3: Gök Mavisi
+      4: Kırmızı Lale
+      5: Turuncu Lale
+      6: Beyaz Lale
+      7: Pembe Lale
+      8: Papatya
+  BROWN_MUSHROOM: Kahverengi Mantar
+  RED_MUSHROOM: Kırmızı Mantar
+  GOLD_BLOCK: Altın Bloğu
+  IRON_BLOCK: Demir Bloğu
+  DOUBLE_STEP:
+    general: .
+    template: slabs
+  STEP: 
+    general: .
+    template: slabs
+  MOSSY_COBBLESTONE: Yosunlu Taş
+  WOOD_STAIRS: Meşe Odunu Merdiveni
+  REDSTONE_WIRE: Kızıltaş
+  DIAMOND_ORE: Elmas Cevheri
+  DIAMOND_BLOCK: Elmas Blok
+  SOIL: Tarım Arazisi
+  BURNING_FURNACE: Fırın
+  SIGN_POST: Tabela
+  WOODEN_DOOR: Tahta Kapı
+  RAILS: Ray
+  COBBLESTONE_STAIRS: Kırıktaş Merdiven
+  WALL_SIGN: sign
+  STONE_PLATE: Taş Basınç Plakası
+  IRON_DOOR_BLOCK: Demir Kapı
+  WOOD_PLATE: Ahşap Basınç Plakası
+  REDSTONE_ORE: Kızıltaş Cevheri
+  GLOWING_REDSTONE_ORE: Parlayan Kızıltaş Cevheri
+  REDSTONE_TORCH_OFF: Kapalı Kızıltaş Meşalesi
+  REDSTONE_TORCH_ON: Kızıltaş Meşalesi
+  STONE_BUTTON: Taş Buton
+  SNOW_BLOCK: Kar Bloğu
+  SUGAR_CANE_BLOCK: Şeker Kamışı
+  CACTUS: Kaktüs
+  NETHERRACK: Nether Taşı
+  SOUL_SAND: Ruh Kumu
+  GLOWSTONE: Işıktaşı
+  JACK_O_LANTERN: Jack o'Lantern
+  CAKE_BLOCK: Pasta
+  DIODE_BLOCK_OFF: Kapalı Kızıltaş Yineleyici
+  DIODE_BLOCK_ON: Açık Kızıltaş Yineleyici
+  MOB_SPAWNER:
+    general: Spawner
+    types:  
+      0: Canavar
+      50: Creeper
+      51: İskelet
+      52: Örümcek
+      53: Dev
+      54: Zombi
+      55: Balçık
+      56: Ghast
+      57: Zombi Domuzadam
+      58: Enderman
+      59: Mağara Örümceği
+      60: Gümüş Balığı
+      61: Blaze
+      62: Magma Küpü
+      63: Ejderha
+      90: Domuz
+      91: Koyun
+      92: İnek
+      93: Tavuk
+      94: Ahtapot
+      95: Kurt
+      96: Mööntar
+      97: Kar Golem
+      98: Leopar
+      99: Demir Golem
+      120: Köylü  
+  MONSTER_EGG:
+    general: .
+    types:
+      0: "Çağır:"
+      50: "Çağır: Creeper"
+      51: "Çağır: İskelet"
+      52: "Çağır: Örümcek"
+      54: "Çağır: Zombi"
+      55: "Çağır: Balçık"
+      56: "Çağır: Ghast"
+      57: "Çağır: Zombi Domuzadam"
+      58: "Çağır: Enderman"
+      59: "Çağır: Mağara Örümceği"
+      60: "Çağır: Gümüş Balığı"
+      61: "Çağır: Blaze"
+      62: "Çağır: Magma Küpü"
+      63: "Çağır: Ejderha"
+      64: "Çağır: Wither"
+      65: "Çağır: Yarasa"
+      66: "Çağır: Cadı"
+      67: "Çağır: Endermite"
+      68: "Çağır: Gardiyan"
+      90: "Çağır: Domuz"
+      91: "Çağır: Koyun"
+      92: "Çağır: İnek"
+      93: "Çağır: Tavuk"
+      94: "Çağır: Ahtapot"
+      95: "Çağır: Kurt"
+      96: "Çağır: Mööntar"
+      98: "Çağır: Leopar"
+      99: "Çağır: Demir Golem"
+      100: "Çağır: At"
+      101: "Çağır: Tavşan"
+      120: "Çağır: Köylü"
+  STAINED_GLASS: 
+    general: Boyalı Cam
+    template: colors
+  GLASS: Cam  
+  TRAP_DOOR: Tuzak Kapısı
+  MONSTER_EGGS:
+    general: Gümüşcün Bloğu
+    types:
+      0: Taş
+      1: Kırık Taş
+      2: Taş Tuğla
+      3: Yosunlu Taş Tuğla
+      4: Kırık Taş Tuğla
+      5: Keskin Taş Tuğla    
+  ANVIL:
+    general: .
+    types:
+      0: Örs
+      1: Hafif Hasarlı Örs
+      2: Ağır Hasarlı Örs
+  LEAVES_2:
+    general: .
+    types:
+      0: Akasya Yaprağı
+      1: Koyu Meşe Yaprakları    
+  VINE: Sarmaşık      
+  SMOOTH_BRICK: 
+    general: .
+    types:
+      0: Taş Tuğla
+      1: Yosunlu Taş Tuğla
+      2: Kırık Taş Tuğla
+      3: Keskin Taş Tuğla
+  HUGE_MUSHROOM_1: Kahverengi Mantar Bloğu
+  HUGE_MUSHROOM_2: Kırmızı Mantar Bloğu
+  IRON_FENCE: Demir Parmaklık
+  THIN_GLASS: İnce Cam
+  FIREBALL: Ateş Topu
+  MELON_BLOCK: Karpuz Bloğu
+  PUMPKIN_STEM: Balkabağı Tohumu
+  MELON_STEM: Karpuz Tohumu
+  FENCE_GATE: Çit Kapısı
+  BRICK_STAIRS: Tuğla Merdiven
+  SMOOTH_STAIRS: Taş Tuğla Merdiveni
+  WATER_LILY: Nilüfer
+  NETHER_BRICK: Nether Tuğlası
+  NETHER_FENCE: Nether Tuğlası Çiti
+  NETHER_BRICK_STAIRS: Nether Merdiveni
+  NETHER_WARTS: Nether Wart
+  ENCHANTMENT_TABLE: Büyü Masası
+  BREWING_STAND: Simya Standı
+  ENDER_PORTAL: Portal
+  ENDER_PORTAL_FRAME: Son Portalı Çerçevesi
+  ENDER_STONE: Son Taşı
+  DRAGON_EGG: Ejderha Yumurtası
+  REDSTONE_LAMP_OFF: Kızıltaş Lambası
+  REDSTONE_LAMP_ON: Açık Kızıltaş Lambası
+  WOOD_DOUBLE_STEP: 2'li Ahşap Basamak
+  WOOD_STEP:
+    general: Basamağı
+    types:
+      0: Meşe Ağacı
+      1: Ladin Odunu
+      2: Huş Odunu
+      3: Orman Ağacı
+      4: Akasya Odunu
+      5: Koyu Meşe Ağacı
+  SANDSTONE_STAIRS: Kumtaşı Merdiveni
+  EMERALD_ORE: Zümrüt Cevheri
+  ENDER_CHEST: Ender Sandık
+  TRIPWIRE_HOOK: Tuzak Kancası
+  TRIPWIRE: Tuzak Kancası
+  EMERALD_BLOCK: Zümrüt Bloğu
+  SPRUCE_WOOD_STAIRS: Ladin Odunu Merdiveni
+  BIRCH_WOOD_STAIRS: Huş Odunu Merdiveni
+  JUNGLE_WOOD_STAIRS: Orman Odunu Merdiveni
+  COMMAND: Komut Bloğu
+  COBBLE_WALL: 
+    general: Duvarı
+    types:
+      0: Kırıktaş
+      1: Yosunlu Kırıktaş
+  FLOWER_POT: Saksı
+  CARROT: Havuç
+  POTATO: Patates
+  WOOD_BUTTON: Ahşap Buton
+  TRAPPED_CHEST: Tuzaklı Sandık
+  GOLD_PLATE: Ağırlıklı Altın Basınç Plakası (Hafif)
+  IRON_PLATE: Ağırlıklı Demir Basınç Plakası (Ağır)
+  HOPPER: Huni
+  DROPPER: Bırakıcı
+  REDSTONE: Kızıltaş
+  DIODE: Kızıltaş Yineleyici
+  REDSTONE_COMPARATOR_OFF: Kızıltaş Karşılaştırıcı
+  REDSTONE_COMPARATOR_ON: Kızıltaş Karşılaştırıcı
+  DAYLIGHT_DETECTOR: Güneş Sensörü
+  REDSTONE_BLOCK: Kızıltaş Bloğu
+  QUARTZ_ORE: Kuvars Cevheri
+  QUARTZ_BLOCK:
+    general: Bloğu
+    types:
+      0: Kuvars
+      1: Keskin Kuvars
+      2: Kuvars Sütun
+  QUARTZ_STAIRS: Kuvars Merdiveni
+  ACTIVATOR_RAIL: Aktivatör Ray
+  STAINED_CLAY: 
+    general: Boyalı Kil
+    template: colors
+  STAINED_GLASS_PANE:
+    general: Boyalı İnce Cam
+    template: colors
+  LOG:
+    general: Odunu
+    types:
+      0: Meşe
+      1: Ladin
+      2: Huş
+      3: Orman Ağacı
+           
+  LOG_2:
+    general: Odunu
+    types:
+      0: Akasya
+      1: Koyu Meşe
+  ACACIA_STAIRS: Akasya Odunu Merdiveni
+  DARK_OAK_STAIRS: Koyu Meşe Odunu Merdiveni
+  SLIME_BLOCK: Balçık Bloğu
+  IRON_TRAPDOOR: Demir Tuzak Kapısı
+  PRISMARINE: 
+    general: .
+    types:
+      0: Prizmarin
+      1: Prizmarin Tuğlası
+      2: Koyu Prizmarin
+  SEA_LANTERN: Deniz Feneri
+  HAY_BLOCK: Saman Balyası
+  CARPET:
+    general: Halı
+    types:
+      0: 
+      1: Turuncu
+      2: Eflatun
+      3: Açık Mavi
+      4: Sarı
+      5: Limon Rengi
+      6: Pembe
+      7: Gri
+      8: Açık Gri
+      9: Camgöbeği
+      10: Mor
+      11: Mavi
+      12: Kahverengi
+      13: Yeşil
+      14: Kırmızı
+      15: Siyah
+  HARD_CLAY: Sertleştirilmiş Kil
+  COAL_BLOCK: Kömür Bloğu
+  TORCH: Meşale
+  PACKED_ICE: Paketlenmiş Buz
+  DOUBLE_PLANT: 
+    general: .
+    types:
+      0: Ayçiçeği
+      1: Leylak
+      2: Çifte Uzun Boylu Ot
+      3: Büyük Eğreltiotu
+      4: Gül Çalılığı
+      5: Şakayık
+  STANDING_BANNER:
+    general: Flama
+    template: colorsinverted
+  WALL_BANNER:
+    general: Flama
+    template: colorsinverted
+  BANNER:
+    general: Flama
+    template: colorsinverted
+  DAYLIGHT_DETECTOR_INVERTED: Güneş Sensörü
+  PAINTING: Tablo
+  SIGN: Tabela
+  BED: Yatak
+  RED_SANDSTONE_STAIRS: Kızıl Kumtaşı Merdiveni
+  DOUBLE_STONE_SLAB2: Kızıl Kumtaşı Merdiveni
+  STONE_SLAB2: Kızıl Kumtaşı Basamak
+  SPRUCE_FENCE_GATE: Ladin Çit Kapısı
+  BIRCH_FENCE_GATE: Huş Çit Kapısı
+  JUNGLE_FENCE_GATE: Orman Çit Kapısı
+  DARK_OAK_FENCE_GATE: Koyu Meşe Çit Kapısı
+  ACACIA_FENCE_GATE: Akasya Çit Kapısı
+  SPRUCE_FENCE: Ladin Çit
+  BIRCH_FENCE: Huş Çit
+  JUNGLE_FENCE: Orman Çit
+  DARK_OAK_FENCE: Koyu Meşe Çit
+  ACACIA_FENCE: Akasya Çit
+  SPRUCE_DOOR: Ladin Kapı
+  BIRCH_DOOR: Huş Kapı
+  JUNGLE_DOOR: Orman Kapı
+  ACACIA_DOOR: Akasya Kapı
+  DARK_OAK_DOOR: Koyu Meşe Kapı
+  IRON_SPADE: Demir Kürek
+  IRON_PICKAXE: Demir Kazma
+  IRON_AXE: Demir Balta
+  FLINT_AND_STEEL: Çakmaktaşı ve Çelik
+  IRON_INGOT: Demir Külçesi
+  GOLD_INGOT: Altın Külçesi
+  IRON_SWORD: Demir Kılıç
+  WOOD_SWORD: Tahta Kılıç
+  WOOD_SPADE: Tahta Kürek
+  WOOD_PICKAXE: Tahta Kazma
+  WOOD_AXE: Tahta Balta
+  STONE_SWORD: Taş Kılıç
+  STONE_SPADE: Taş Kürek
+  STONE_PICKAXE: Taş Kazma
+  STONE_AXE: Taş Balta
+  DIAMOND_SWORD: Elmas Kılıç
+  DIAMOND_SPADE: Elmas Kürek
+  DIAMOND_PICKAXE: Elmas Kazma
+  DIAMOND_AXE: Elmas Balta
+  MUSHROOM_SOUP: Mantar Güveç
+  GOLD_SWORD: Altın Kılıç
+  GOLD_SPADE: Altın Kürek
+  GOLD_PICKAXE: Altın Kazma
+  GOLD_AXE: Altın Balta
+  WOOD_HOE: Tahta Çapa
+  STONE_HOE: Taş Çapa
+  IRON_HOE: Demir Çapa
+  DIAMOND_HOE: Elmas Çapa
+  GOLD_HOE: Altın Çapa
+  LEATHER_HELMET: Deri Kask
+  LEATHER_CHESTPLATE: Deri Ceket
+  LEATHER_LEGGINGS: Deri Pantolon
+  LEATHER_BOOTS: Deri Ayakkabı
+  CHAINMAIL_HELMET: Zincir Kask
+  CHAINMAIL_CHESTPLATE: Zincir Zırh
+  CHAINMAIL_LEGGINGS: Zincir Pantolon
+  CHAINMAIL_BOOTS: Zincir Ayakkabı
+  IRON_HELMET: Demir Kask
+  IRON_CHESTPLATE: Demir Zırh
+  IRON_LEGGINGS: Demir Pantolon
+  IRON_BOOTS: Demir Ayakkabı
+  DIAMOND_HELMET: Elmas Kask
+  DIAMOND_CHESTPLATE: Elmas Zırh
+  DIAMOND_LEGGINGS: Elmas Pantolon
+  DIAMOND_BOOTS: Elmas Ayakkabı
+  GOLD_HELMET: Altın Kask
+  GOLD_CHESTPLATE: Altın Zırh
+  GOLD_LEGGINGS: Altın Pantolon
+  GOLD_BOOTS: Altın Ayakkabı
+  PORK: Çiğ Domuz Pirzolası
+  GRILLED_PORK: Pişmiş Domuz Pirzolası
+  GOLDEN_APPLE: Altın Elma
+  WOOD_DOOR: Ahşap Kapı
+  WATER_BUCKET: Su Kovası
+  LAVA_BUCKET: Lav Kovası
+  IRON_DOOR: Demir Kapı
+  SNOW_BALL: Kartopu
+  MILK_BUCKET: Süt Kovası
+  CLAY_BRICK: Tuğla
+  CLAY_BALL: Kil
+  SUGAR_CANE: Şeker Kamışı
+  SLIME_BALL: Balçık Topu
+  STORAGE_MINECART: Sandıklı Vagon
+  POWERED_MINECART: Fırınlı Vagon
+  FISHING_ROD: Olta
+  WATCH: Saat
+  GLOWSTONE_DUST: Işıktaşı Tozu
+  RAW_FISH:
+    general: .
+    types:
+      0: Çiğ Balık
+      1: Çiğ Somon Balığı
+      2: Palyaço Balığı
+      3: Kirpi Balığı
+  COOKED_FISH:
+    general: .
+    types:
+      0: Pişmiş Balık
+      1: Pişmiş Somon Balığı
+  INK_SACK:
+    general: .
+    types:
+      0: Mürekkep Kesesi
+      1: Gül Kırmızısı
+      2: Kaktüs Yeşili
+      3: Kakao Çekirdekleri
+      4: Lapis Lazuli
+      5: Mor Boya
+      6: Turkuaz Boya
+      7: Gümüş Boya
+      8: Gri Boya
+      9: Pembe Boya
+      10: Açık Yeşil Boya
+      11: Sarı Boya
+      12: Açık Mavi Boya
+      13: Eflatun Boya
+      14: Turuncu Boya
+      15: Beyaz Boya
+  PUMPKIN_SEEDS: Balkabağı Tohumu
+  MELON_SEEDS: Karpuz Tohumu
+  RAW_BEEF: Çiğ İnek Eti
+  COOKED_BEEF: Pişmiş İnek Eti
+  RAW_CHICKEN: Çiğ Tavuk
+  COOKED_CHICKEN: Pişmiş Tavuk
+  ROTTEN_FLESH: Çürük Et
+  ENDER_PEARL: Ender İncisi
+  BLAZE_ROD: Blaze Çubuğu
+  GHAST_TEAR: Ghast Gözyaşı
+  GOLD_NUGGET: Altın Parçası
+  NETHER_STALK: Nether Wart
+  GLASS_BOTTLE: Boş İksir
+  SPIDER_EYE: Örümcek Gözü
+  FERMENTED_SPIDER_EYE: Mayalı Örümcek Gözü
+  BLAZE_POWDER: Blaze Tozu
+  MAGMA_CREAM: Magma Kremi
+  BREWING_STAND_ITEM: Simya Standı
+  CAULDRON_ITEM: Kazan
+  EYE_OF_ENDER: Ender Gözü
+  SPECKLED_MELON: Parlayan Karpuz
+  EXP_BOTTLE: Tecrübe İksiri
+  BOOK_AND_QUILL: Kitap ve Kalem
+  WRITTEN_BOOK: Yazılmış Kitap
+  ITEM_FRAME: Eşya Çerçevesi
+  FLOWER_POT_ITEM: Saksı
+  CARROT_ITEM: Havuç
+  POTATO_ITEM: Patates
+  BAKED_POTATO: Haşlanmış Patates
+  POISONOUS_POTATO: Zehirli Patates
+  EMPTY_MAP: Boş Harita
+  GOLDEN_CARROT: Altın Havuç
+  SKULL_ITEM:
+    general: .
+    types:
+      0: İskelet Kafası
+      1: Wither İskelet Kafatası
+      2: Zombi Kafası
+      3: Kafa
+      4: Creeper Kafası
+      5: Ejderha
+  CARROT_STICK: Havuç Oltası
+  NETHER_STAR: Nether Yıldızı
+  PUMPKIN_PIE: Balkabağı Turtası
+  FIREWORK: Havai Fişek
+  FIREWORK_CHARGE: Havai Fişek Yıldızı
+  ENCHANTED_BOOK: Büyülü Kitap
+  REDSTONE_COMPARATOR: Kızıltaş Karşılaştırıcı
+  NETHER_BRICK_ITEM: Nether Tuğlası
+  QUARTZ: Kuvars
+  EXPLOSIVE_MINECART: TNT'li Vagon
+  HOPPER_MINECART: Huni'li Vagon
+  MINECART: Vagon
+  SADDLE: Eyer
+  PRISMARINE_SHARD: Prizmarin Parçacığı
+  PRISMARINE_CRYSTALS: Prizmarin Kristali
+  RABBIT: Çiğ Tavşan
+  COOKED_RABBIT: Pişmiş Tavşan
+  APPLE: Elma
+  BREAD: Ekmek
+  CAKE: Pasta
+  COOKIE: Kurabiye
+  MELON: Karpuz
+  RABBIT_STEW: Tavşan Yahnisi
+  RABBIT_FOOT: Tavşan Ayağı
+  RABBIT_HIDE: Tavşan Derisi
+  ARMOR_STAND: Zırh Standı
+  IRON_BARDING: Demir At Zırhı
+  GOLD_BARDING: Altın At Zırhı
+  COMPASS: Pusula
+  SHEARS: Makas
+  LEASH: Kayış
+  DIAMOND_BARDING: Elmas At Zırhı
+  NAME_TAG: İsim Etiketi
+  COMMAND_MINECART: Komut Bloklu Vagon
+  MUTTON: Çiğ Koyun Eti
+  COOKED_MUTTON: Pişmiş Koyun Eti
+  SPRUCE_DOOR_ITEM: Ladin Kapı
+  BIRCH_DOOR_ITEM: Huş Kapı
+  JUNGLE_DOOR_ITEM: Orman Kapı
+  ACACIA_DOOR_ITEM: Akasya Kapı
+  DARK_OAK_DOOR_ITEM: Koyu Meşe Kapı
+  GOLD_RECORD: C418 - 13
+  GREEN_RECORD: C418 - cat
+  RECORD_3: C418 - blocks
+  RECORD_4: C418 - chirp
+  RECORD_5: C418 - far
+  RECORD_6: C418 - mall
+  RECORD_7: C418 - mellohi
+  RECORD_8: C418 - stal
+  RECORD_9: C418 - strad
+  RECORD_10: C418 - ward
+  RECORD_11: C418 - 11
+  RECORD_12: C418 - wait
+  PURPUR_BLOCK: purpurBlock
+  PURPUR_DOUBLE_SLAB: purpurSlab
+  PURPUR_PILLAR: purpurPillar
+  PURPUR_SLAB: purpurSlab
+  PURPUR_STAIRS: stairsPurpur
+  BEETROOT_SEEDS: beetroot_seeds
+  BEETROOT_SOUP: beetroot_soup
+  DRAGONS_BREATH: dragon_breath
+  CHORUS_FLOWER: chorusFlower
+  CHORUS_FRUIT: chorusFruit
+  CHORUS_FRUIT_POPPED: chorusFruitPopped
+  CHORUS_PLANT: chorusPlant
+  END_BRICKS: endBricks
+  END_CRYSTAL: end_crystal
+  END_GATEWAY: endPortal
+  END_ROD: endRod
+  POTION:
+    general: potion.effect
+    template: potions
+  LINGERING_POTION:
+    general: .
+    template: potions
+  SPLASH_POTION:
+    general: .
+    template: potions
+  TIPPED_ARROW:
+    general: .
+    template: potions
+  GRASS_PATH: Çimen
+  BOAT: Tekne
+  BOAT_ACACIA: Akasya Bot
+  BOAT_BIRCH: Huş Bot
+  BOAT_DARK_OAK: Koyu Meşe Bot
+  BOAT_JUNGLE: Orman Bot
+  BOAT_SPRUCE: Ladin Bot
+  NETHER_WART_BLOCK: Nether Wart Bloğu
+  RED_NETHER_BRICK: Kırmızı Nether Tuğlası
+  BONE_BLOCK: Kemik Bloğu
