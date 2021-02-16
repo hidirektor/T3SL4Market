@@ -31,7 +31,6 @@ public class InventoryClickListener implements Listener {
       String uuid = "";
       double bal = 0.0D;
       int amount = 0;
-      Inventory inv = e.getInventory();
       ItemStack item = e.getCurrentItem();
       int price = 0;
       Economy econ = T3SL4Market.getEconomy();

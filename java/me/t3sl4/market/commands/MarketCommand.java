@@ -25,13 +25,7 @@ public class MarketCommand implements CommandExecutor {
    static int adet;
    static boolean selfInv = false;
    static byte data;
-   static int q;
-   static int k = 0;
-   static Material material;
    static ItemStack item;
-   static int amount;
-   static int aData;
-   static byte aDataByte;
    private static ItemMeta oldItem;
 
    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

@@ -14,7 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class TranslationMapping {
    static Map<String, String> transmap = new HashMap();
-   private static SettingsManager manager = SettingsManager.getInstance();
+   static SettingsManager manager = SettingsManager.getInstance();
 
    public TranslationMapping(JavaPlugin plugin) {
       plugin.getLogger().info("Loading TranslationMapping...");

@@ -3,7 +3,6 @@ package me.t3sl4.market.listeners;
 import me.t3sl4.market.T3SL4Market;
 import me.t3sl4.market.util.MessageUtil;
 import me.t3sl4.market.util.UpdateChecker;
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;

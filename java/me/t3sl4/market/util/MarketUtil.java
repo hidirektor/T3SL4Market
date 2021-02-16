@@ -6,14 +6,8 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 public class MarketUtil {
-   private static int q = -1;
    static SettingsManager manager = SettingsManager.getInstance();
-   private static int price;
-   private static int amount;
    private static int slot;
-   private static Material material;
-   private static int data;
-   private static byte dataByte;
    public static int marketsNumber;
 
 
