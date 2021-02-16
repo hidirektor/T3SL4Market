@@ -296,120 +296,65 @@ public class MarketCommand implements CommandExecutor {
                         return true;
                      }
 
-                     if(MarketUtil.checkAllOrtaks(p)) {
-                        int marketNumber = MarketUtil.marketsNumber;
-                        Player marketSahibi = Bukkit.getPlayer(this.manager.getData().getString("markets.market" + marketNumber + ".name"));
-                        for (i = 0; i <= T3SL4Market.count; ++i) {
-                           if (this.manager.getData().isString("markets.market" + i + ".name") && this.manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(marketSahibi.getName()) && this.manager.getData().isConfigurationSection("markets.market" + i + ".slot" + args[1])) {
-                              try {
-                                 slot = Integer.parseInt(args[1]);
-                              } catch (Exception var12) {
-                                 p.sendMessage(MessageUtil.HATA);
-                                 return true;
-                              }
+                     for (i = 0; i <= T3SL4Market.count; ++i) {
+                        if (this.manager.getData().isString("markets.market" + i + ".name") && this.manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(p.getName()) && this.manager.getData().isConfigurationSection("markets.market" + i + ".slot" + args[1])) {
+                           try {
+                              slot = Integer.parseInt(args[1]);
+                           } catch (Exception var12) {
+                              p.sendMessage(MessageUtil.HATA);
+                              return true;
+                           }
 
-                              if (this.manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
-                                 if(this.manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen") == p.getName()) {
-                                    item = this.manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
-                                    item.setItemMeta(oldItem);
-                                    p.getInventory().addItem(new ItemStack[]{item});
-                                    this.manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
-                                    this.manager.saveData();
+                           if (this.manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
+                              if(this.manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen").equalsIgnoreCase(p.getName())) {
+                                 item = this.manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
+                                 item.setItemMeta(oldItem);
+                                 p.getInventory().addItem(new ItemStack[]{item});
+                                 this.manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
+                                 this.manager.saveData();
+                              } else {
+                                 p.sendMessage(MessageUtil.ESYAYI_SEN_EKLEMEDIN);
+                              }
+                           }
+                        }
+                     }
+
+                     if (args[1].equalsIgnoreCase("satır")) {
+
+                     }
+
+                     if (args[1].equalsIgnoreCase("hepsi")) {
+                        int geriAlinan = 0;
+                        for (i = 0; i <= T3SL4Market.count; ++i) {
+                           if (this.manager.getData().isString("markets.market" + i + ".name") && this.manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(p.getName())) {
+                              n = 0;
+                              while (n <= 54) {
+                                 if (this.manager.getData().isConfigurationSection("markets.market" + i + ".slot" + n)) {
+                                    slot = n;
+                                    if (this.manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
+                                       if(this.manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen").equalsIgnoreCase(p.getName())) {
+                                          item = this.manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
+                                          item.setItemMeta(oldItem);
+                                          p.getInventory().addItem(new ItemStack[]{item});
+                                          geriAlinan++;
+                                          this.manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
+                                          this.manager.saveData();
+                                       }
+                                    }
+                                    ++n;
                                  } else {
-                                    p.sendMessage(MessageUtil.ESYAYI_SEN_EKLEMEDIN);
+                                    ++n;
                                  }
                               }
                            }
                         }
 
-                        if (args[1].equalsIgnoreCase("satır")) {
-
+                        if(geriAlinan != 0) {
+                           p.sendMessage(MessageUtil.MARKETTEN_ITEM_KALDIRILDI.replaceAll("%amount%", String.valueOf(geriAlinan)));
+                        } else {
+                           p.sendMessage(MessageUtil.MARKETTEN_ITEM_KALDIRILAMADI);
                         }
-
-                        if (args[1].equalsIgnoreCase("hepsi")) {
-                           for (i = 0; i <= T3SL4Market.count; ++i) {
-                              if (this.manager.getData().isString("markets.market" + i + ".name") && this.manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(p.getName())) {
-                                 n = 0;
-
-                                 while (n <= 54) {
-                                    if (this.manager.getData().isConfigurationSection("markets.market" + i + ".slot" + n)) {
-                                       slot = n;
-                                       if (this.manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
-                                          if(this.manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen") == p.getName()) {
-                                             item = this.manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
-                                             item.setItemMeta(oldItem);
-                                             p.getInventory().addItem(new ItemStack[]{item});
-                                             this.manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
-                                             this.manager.saveData();
-                                          }
-                                       }
-                                    } else {
-                                       ++n;
-                                    }
-                                 }
-                              }
-                           }
-                           p.sendMessage(MessageUtil.MARKET_TEMIZLENDI);
-                           return true;
-                        }
-                     } else {
-                        if (!MarketUtil.hasMarket(p)) {
-                           p.sendMessage(MessageUtil.MARKET_BULUNAMADI);
-                           return true;
-                        }
-
-                        for (i = 0; i <= T3SL4Market.count; ++i) {
-                           if (this.manager.getData().isString("markets.market" + i + ".name") && this.manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(p.getName()) && this.manager.getData().isConfigurationSection("markets.market" + i + ".slot" + args[1])) {
-                              try {
-                                 slot = Integer.parseInt(args[1]);
-                              } catch (Exception var12) {
-                                 p.sendMessage(MessageUtil.HATA);
-                                 return true;
-                              }
-
-                              if (this.manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
-                                 if(this.manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen") == p.getName()) {
-                                    item = this.manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
-                                    item.setItemMeta(oldItem);
-                                    p.getInventory().addItem(new ItemStack[]{item});
-                                    this.manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
-                                    this.manager.saveData();
-                                 }
-                              }
-                           }
-                        }
-
-                        if (args[1].equalsIgnoreCase("satır")) {
-
-                        }
-
-                        if (args[1].equalsIgnoreCase("hepsi")) {
-                           for (i = 0; i <= T3SL4Market.count; ++i) {
-                              if (this.manager.getData().isString("markets.market" + i + ".name") && this.manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(p.getName())) {
-                                 n = 0;
-
-                                 while (n <= 54) {
-                                    if (this.manager.getData().isConfigurationSection("markets.market" + i + ".slot" + n)) {
-                                       slot = n;
-                                       if (this.manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
-                                          if(this.manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen") == p.getName()) {
-                                             item = this.manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
-                                             item.setItemMeta(oldItem);
-                                             p.getInventory().addItem(new ItemStack[]{item});
-                                             this.manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
-                                             this.manager.saveData();
-                                          }
-                                       }
-                                    } else {
-                                       ++n;
-                                    }
-                                 }
-                              }
-                           }
-
-                           p.sendMessage(MessageUtil.MARKET_TEMIZLENDI);
-                           return true;
-                        }
+                        return true;
                      }
                   } else {
                      p.sendMessage(MessageUtil.PERMERROR);

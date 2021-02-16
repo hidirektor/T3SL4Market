@@ -68,6 +68,8 @@ Messages:
     OrtaklikdPasif: '&eOrtaklık Sistemi &cKapatılmıştır&e.'
     MarketSahibi: '&eMarket Sahibi: '
     MarketSahip: '&4♛ &c%player%'
+    MarkettenItemKaldirildi: '&eMarketten &c%amount% &eEşya Geri Alındı.'
+    MarkettenItemKaldirilamadi: '&eMarkete Henüz Eşya Eklemediğin İçin Marketten Geri Alınan Eşya Olmadı.'
   UsageMessages:
     EkleKullanim: '&e/market ekle <Slot> <Fiyat>'
     KaldirmaKullanim: '&e/market kaldir <Slot> &c|| &e/market kaldir hepsi'

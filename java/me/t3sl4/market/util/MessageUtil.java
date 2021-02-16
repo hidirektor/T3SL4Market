@@ -36,7 +36,6 @@ public class MessageUtil {
    public static String ZATEN_ORTAKSIN;
    public static String ESYAYI_SEN_EKLEMEDIN;
    public static String MARKET_YARATILDI;
-   public static String MARKET_TEMIZLENDI;
    public static String ITEM_KALDIRDILDI;
    public static String ITEM_EKLENDI;
    public static String KENDI_MARKETINDEN_ITEM_ALAMAZSIN;
@@ -57,6 +56,8 @@ public class MessageUtil {
    public static String ORTAKLIKD_PASIF;
    public static String MARKET_SAHIBI;
    public static String MARKET_SAHIP;
+   public static String MARKETTEN_ITEM_KALDIRILDI;
+   public static String MARKETTEN_ITEM_KALDIRILAMADI;
    public static String EKLE_KULLANIM;
    public static String KALDIRMA_KULLANIM;
    public static String KUR_KULLANIM;
@@ -104,7 +105,6 @@ public class MessageUtil {
       ZATEN_ORTAKSIN = PREFIX + colorize(manager.getConfig().getString("Messages.ErrorMessages.ZatenOrtaksin"));
       ESYAYI_SEN_EKLEMEDIN = PREFIX + colorize(manager.getConfig().getString("Messages.ErrorMessages.EsyayiSenEklemedin"));
       MARKET_YARATILDI = PREFIX + colorize(manager.getConfig().getString("Messages.SuccessMessages.MarketYaratildi"));
-      MARKET_TEMIZLENDI = PREFIX + colorize(manager.getConfig().getString("Messages.SuccessMessages.MarketTemizlendi"));
       ITEM_KALDIRDILDI = PREFIX + colorize(manager.getConfig().getString("Messages.SuccessMessages.ItemKaldirildi"));
       ITEM_EKLENDI = PREFIX + colorize(manager.getConfig().getString("Messages.SuccessMessages.ItemEklendi"));
       KENDI_MARKETINDEN_ITEM_ALAMAZSIN = PREFIX + colorize(manager.getConfig().getString("Messages.SuccessMessages.KendiMarketindenItemAlamazsin"));
@@ -125,6 +125,8 @@ public class MessageUtil {
       ORTAKLIKD_PASIF = PREFIX + colorize(manager.getConfig().getString("Messages.SuccessMessages.OrtaklikdPasif"));
       MARKET_SAHIBI = PREFIX + colorize(manager.getConfig().getString("Messages.SuccessMessages.MarketSahibi"));
       MARKET_SAHIP = PREFIX + colorize(manager.getConfig().getString("Messages.SuccessMessages.MarketSahip"));
+      MARKETTEN_ITEM_KALDIRILDI = PREFIX + colorize(manager.getConfig().getString("Messages.SuccessMessages.MarkettenItemKaldirildi"));
+      MARKETTEN_ITEM_KALDIRILAMADI = PREFIX + colorize(manager.getConfig().getString("Messages.SuccessMessages.MarkettenItemKaldirilamadi"));
       EKLE_KULLANIM = PREFIX + colorize(manager.getConfig().getString("Messages.UsageMessages.EkleKullanim"));
       KALDIRMA_KULLANIM = PREFIX + colorize(manager.getConfig().getString("Messages.UsageMessages.KaldirmaKullanim"));
       KUR_KULLANIM = PREFIX + colorize(manager.getConfig().getString("Messages.UsageMessages.KurKullanim"));

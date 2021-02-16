@@ -1,6 +1,6 @@
 name: T3SL4Market
 author: SYN_T3SL4
-version: 15.02.2021
+version: 16.02.2021
 main: me.t3sl4.market.T3SL4Market
 website: github.com/hidirektor
 depend: [Vault]
