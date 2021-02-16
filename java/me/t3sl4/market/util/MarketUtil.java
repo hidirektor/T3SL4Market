@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 public class MarketUtil {
    private static int q = -1;
-   private static SettingsManager manager = SettingsManager.getInstance();
+   static SettingsManager manager = SettingsManager.getInstance();
    private static int price;
    private static int amount;
    private static int slot;
@@ -62,7 +62,7 @@ public class MarketUtil {
    public static boolean checkAllOrtaks(Player p) {
       for(int i=1; i<=T3SL4Market.count; i++) {
          for(int j=0; j<manager.getData().getInt("markets.market" + i + ".ortaklik.sonSayi"); j++) {
-            if(manager.getData().getString("markets.market" + i + ".ortaklik.ortaklar." + j) == p.getName()) {
+            if(manager.getData().getString("markets.market" + i + ".ortaklik.ortaklar." + j).equalsIgnoreCase(p.getName())) {
                marketsNumber = i;
                return true;
             }

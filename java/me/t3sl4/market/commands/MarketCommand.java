@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MarketCommand implements CommandExecutor {
-   SettingsManager manager = SettingsManager.getInstance();
+   static SettingsManager manager = SettingsManager.getInstance();
    static int slot;
    static int fiyat;
    static int adet;
@@ -71,7 +71,7 @@ public class MarketCommand implements CommandExecutor {
 
                      if(MarketUtil.checkAllOrtaks(p)) {
                         int marketNumber = MarketUtil.marketsNumber;
-                        Player marketSahibi = Bukkit.getPlayer(this.manager.getData().getString("markets.market" + marketNumber + ".name"));
+                        Player marketSahibi = Bukkit.getPlayer(manager.getData().getString("markets.market" + marketNumber + ".name"));
                         p.sendMessage(MessageUtil.ZATEN_ORTAKSIN.replaceAll("%player%", marketSahibi.getName()));
                         return true;
                      }
@@ -86,12 +86,12 @@ public class MarketCommand implements CommandExecutor {
                      }
 
                      ++T3SL4Market.count;
-                     this.manager.getData().set("market_sayisi", T3SL4Market.count);
-                     this.manager.getData().set("markets.market" + T3SL4Market.count + ".uuid", uuid);
-                     this.manager.getData().set("markets.market" + T3SL4Market.count + ".name", p.getName());
-                     this.manager.getData().set("markets.market" + T3SL4Market.count + ".ortaklik.enable", durum);
-                     this.manager.getData().set("markets.market" + T3SL4Market.count + ".ortaklik.sonSayi", 0);
-                     this.manager.saveData();
+                     manager.getData().set("market_sayisi", T3SL4Market.count);
+                     manager.getData().set("markets.market" + T3SL4Market.count + ".uuid", uuid);
+                     manager.getData().set("markets.market" + T3SL4Market.count + ".name", p.getName());
+                     manager.getData().set("markets.market" + T3SL4Market.count + ".ortaklik.enable", durum);
+                     manager.getData().set("markets.market" + T3SL4Market.count + ".ortaklik.sonSayi", 0);
+                     manager.saveData();
                      p.sendMessage(MessageUtil.MARKET_YARATILDI);
                      new Gui(p.getName());
                      return true;
@@ -120,7 +120,7 @@ public class MarketCommand implements CommandExecutor {
                            if(MarketUtil.checkAllOrtaks(p)) {
                               int marketNumber = MarketUtil.marketsNumber;
                               Player ortak = p;
-                              Player marketSahibi = Bukkit.getPlayer(this.manager.getData().getString("markets.market" + marketNumber + ".name"));
+                              Player marketSahibi = Bukkit.getPlayer(manager.getData().getString("markets.market" + marketNumber + ".name"));
                               new Gui(marketSahibi.getName());
                               MarketUtil.loadItemsString(marketSahibi.getName());
                               if (Gui.getInventory() == null) {
@@ -147,7 +147,7 @@ public class MarketCommand implements CommandExecutor {
                               return true;
                            }
 
-                           if (this.manager.getData().isString("markets.market" + i + ".name") && this.manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(args[1])) {
+                           if (manager.getData().isString("markets.market" + i + ".name") && manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(args[1])) {
                               new Gui(args[1]);
                               MarketUtil.loadItemsString(args[1]);
                               p.openInventory(Gui.getInventory());
@@ -179,7 +179,7 @@ public class MarketCommand implements CommandExecutor {
 
                      if(MarketUtil.checkAllOrtaks(p)) {
                         int marketNumber = MarketUtil.marketsNumber;
-                        Player marketSahibi = Bukkit.getPlayer(this.manager.getData().getString("markets.market" + marketNumber + ".name"));
+                        Player marketSahibi = Bukkit.getPlayer(manager.getData().getString("markets.market" + marketNumber + ".name"));
                         if (p.getInventory().getItemInHand().getType().equals(Material.AIR)) {
                            p.sendMessage(MessageUtil.ELINIZ_BOS);
                            return true;
@@ -211,16 +211,16 @@ public class MarketCommand implements CommandExecutor {
                         }
 
                         for (int j = 0; j <= T3SL4Market.count; ++j) {
-                           if (this.manager.getData().isString("markets.market" + j + ".uuid") && this.manager.getData().getString("markets.market" + j + ".uuid").equalsIgnoreCase(String.valueOf(marketSahibi.getUniqueId()))) {
-                              if (this.manager.getData().isConfigurationSection("markets.market" + j + ".slot" + slot)) {
+                           if (manager.getData().isString("markets.market" + j + ".uuid") && manager.getData().getString("markets.market" + j + ".uuid").equalsIgnoreCase(String.valueOf(marketSahibi.getUniqueId()))) {
+                              if (manager.getData().isConfigurationSection("markets.market" + j + ".slot" + slot)) {
                                  p.sendMessage(MessageUtil.SLOT_ZATEN_DOLU);
                                  return true;
                               }
 
-                              this.manager.getData().set("markets.market" + j + ".slot" + slot + ".item", m);
-                              this.manager.getData().set("markets.market" + j + ".slot" + slot + ".fiyat", fiyat);
-                              this.manager.getData().set("markets.market" + j + ".slot" + slot + ".ekleyen", p.getName());
-                              this.manager.saveData();
+                              manager.getData().set("markets.market" + j + ".slot" + slot + ".item", m);
+                              manager.getData().set("markets.market" + j + ".slot" + slot + ".fiyat", fiyat);
+                              manager.getData().set("markets.market" + j + ".slot" + slot + ".ekleyen", p.getName());
+                              manager.saveData();
                            }
                         }
 
@@ -264,16 +264,16 @@ public class MarketCommand implements CommandExecutor {
                         }
 
                         for (int j = 0; j <= T3SL4Market.count; ++j) {
-                           if (this.manager.getData().isString("markets.market" + j + ".uuid") && this.manager.getData().getString("markets.market" + j + ".uuid").equalsIgnoreCase(uuid)) {
-                              if (this.manager.getData().isConfigurationSection("markets.market" + j + ".slot" + slot)) {
+                           if (manager.getData().isString("markets.market" + j + ".uuid") && manager.getData().getString("markets.market" + j + ".uuid").equalsIgnoreCase(uuid)) {
+                              if (manager.getData().isConfigurationSection("markets.market" + j + ".slot" + slot)) {
                                  p.sendMessage(MessageUtil.SLOT_ZATEN_DOLU);
                                  return true;
                               }
 
-                              this.manager.getData().set("markets.market" + j + ".slot" + slot + ".item", m);
-                              this.manager.getData().set("markets.market" + j + ".slot" + slot + ".fiyat", fiyat);
-                              this.manager.getData().set("markets.market" + j + ".slot" + slot + ".ekleyen", p.getName());
-                              this.manager.saveData();
+                              manager.getData().set("markets.market" + j + ".slot" + slot + ".item", m);
+                              manager.getData().set("markets.market" + j + ".slot" + slot + ".fiyat", fiyat);
+                              manager.getData().set("markets.market" + j + ".slot" + slot + ".ekleyen", p.getName());
+                              manager.saveData();
                            }
                         }
 
@@ -297,7 +297,7 @@ public class MarketCommand implements CommandExecutor {
                      }
 
                      for (i = 0; i <= T3SL4Market.count; ++i) {
-                        if (this.manager.getData().isString("markets.market" + i + ".name") && this.manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(p.getName()) && this.manager.getData().isConfigurationSection("markets.market" + i + ".slot" + args[1])) {
+                        if (manager.getData().isString("markets.market" + i + ".name") && manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(p.getName()) && manager.getData().isConfigurationSection("markets.market" + i + ".slot" + args[1])) {
                            try {
                               slot = Integer.parseInt(args[1]);
                            } catch (Exception var12) {
@@ -305,13 +305,13 @@ public class MarketCommand implements CommandExecutor {
                               return true;
                            }
 
-                           if (this.manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
-                              if(this.manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen").equalsIgnoreCase(p.getName())) {
-                                 item = this.manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
+                           if (manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
+                              if(manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen").equalsIgnoreCase(p.getName())) {
+                                 item = manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
                                  item.setItemMeta(oldItem);
                                  p.getInventory().addItem(new ItemStack[]{item});
-                                 this.manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
-                                 this.manager.saveData();
+                                 manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
+                                 manager.saveData();
                               } else {
                                  p.sendMessage(MessageUtil.ESYAYI_SEN_EKLEMEDIN);
                               }
@@ -326,19 +326,19 @@ public class MarketCommand implements CommandExecutor {
                      if (args[1].equalsIgnoreCase("hepsi")) {
                         int geriAlinan = 0;
                         for (i = 0; i <= T3SL4Market.count; ++i) {
-                           if (this.manager.getData().isString("markets.market" + i + ".name") && this.manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(p.getName())) {
+                           if (manager.getData().isString("markets.market" + i + ".name") && manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(p.getName())) {
                               n = 0;
                               while (n <= 54) {
-                                 if (this.manager.getData().isConfigurationSection("markets.market" + i + ".slot" + n)) {
+                                 if (manager.getData().isConfigurationSection("markets.market" + i + ".slot" + n)) {
                                     slot = n;
-                                    if (this.manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
-                                       if(this.manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen").equalsIgnoreCase(p.getName())) {
-                                          item = this.manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
+                                    if (manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
+                                       if(manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen").equalsIgnoreCase(p.getName())) {
+                                          item = manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
                                           item.setItemMeta(oldItem);
                                           p.getInventory().addItem(new ItemStack[]{item});
                                           geriAlinan++;
-                                          this.manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
-                                          this.manager.saveData();
+                                          manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
+                                          manager.saveData();
                                        }
                                     }
                                     ++n;
@@ -377,13 +377,13 @@ public class MarketCommand implements CommandExecutor {
                         }
 
                         int marketNumber = MarketUtil.getMarketNumber(p);
-                        if (this.manager.getData().getBoolean("markets.market" + marketNumber + ".ortaklik.enable") == false) {
-                           this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.enable", true);
-                           this.manager.saveData();
+                        if (manager.getData().getBoolean("markets.market" + marketNumber + ".ortaklik.enable") == false) {
+                           manager.getData().set("markets.market" + marketNumber + ".ortaklik.enable", true);
+                           manager.saveData();
                            p.sendMessage(MessageUtil.ORTAKLIK_AKTIF);
                         } else {
-                           this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.enable", false);
-                           this.manager.saveData();
+                           manager.getData().set("markets.market" + marketNumber + ".ortaklik.enable", false);
+                           manager.saveData();
                            p.sendMessage(MessageUtil.ORTAKLIK_DEAKTIF);
                         }
                      } else {
@@ -405,7 +405,7 @@ public class MarketCommand implements CommandExecutor {
                            return true;
                         }
 
-                        if (this.manager.getData().getBoolean("markets.market" + MarketUtil.getMarketNumber(p) + ".ortaklik.enable") == false) {
+                        if (manager.getData().getBoolean("markets.market" + MarketUtil.getMarketNumber(p) + ".ortaklik.enable") == false) {
                            p.sendMessage(MessageUtil.ORTAKLIK_KAPALI);
                            return true;
                         }
@@ -423,16 +423,16 @@ public class MarketCommand implements CommandExecutor {
                                     String eklenecekIsim = eklenecek.getName();
                                     int marketNumber = MarketUtil.getMarketNumber(p);
                                     int sonSayi = 0;
-                                    this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.sonSayi", sonSayi);
-                                    if (this.manager.getData().getInt("markets.market" + marketNumber + ".ortaklik.sonSayi") == 0) {
-                                       this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.ortaklar." + sonSayi, eklenecekIsim);
+                                    manager.getData().set("markets.market" + marketNumber + ".ortaklik.sonSayi", sonSayi);
+                                    if (manager.getData().getInt("markets.market" + marketNumber + ".ortaklik.sonSayi") == 0) {
+                                       manager.getData().set("markets.market" + marketNumber + ".ortaklik.ortaklar." + sonSayi, eklenecekIsim);
                                        sonSayi++;
-                                       this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.sonSayi", sonSayi);
-                                       this.manager.saveData();
+                                       manager.getData().set("markets.market" + marketNumber + ".ortaklik.sonSayi", sonSayi);
+                                       manager.saveData();
                                     } else {
-                                       int ortakSira = (int) this.manager.getData().get("markets.market" + marketNumber + ".ortaklik.sonSayi");
-                                       this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.ortaklar." + ortakSira, eklenecekIsim);
-                                       this.manager.saveData();
+                                       int ortakSira = (int) manager.getData().get("markets.market" + marketNumber + ".ortaklik.sonSayi");
+                                       manager.getData().set("markets.market" + marketNumber + ".ortaklik.ortaklar." + ortakSira, eklenecekIsim);
+                                       manager.saveData();
                                     }
                                     p.sendMessage(MessageUtil.ORTAK_EKLENDI.replaceAll("%player%", eklenecekIsim));
                                     eklenecek.sendMessage(MessageUtil.ORTAK_OLARAK_EKLENDINIZ.replaceAll("%player%", p.getName()));
@@ -467,7 +467,7 @@ public class MarketCommand implements CommandExecutor {
                            return true;
                         }
 
-                        if (this.manager.getData().getBoolean("markets.market" + MarketUtil.getMarketNumber(p) + ".ortaklik.enable") == false) {
+                        if (manager.getData().getBoolean("markets.market" + MarketUtil.getMarketNumber(p) + ".ortaklik.enable") == false) {
                            p.sendMessage(MessageUtil.ORTAKLIK_KAPALI);
                            return true;
                         }
@@ -479,26 +479,26 @@ public class MarketCommand implements CommandExecutor {
 
                         Player silinecek = Bukkit.getPlayer(args[1]);
                         int marketNumber = MarketUtil.getMarketNumber(p);
-                        int sonSayi = (int) this.manager.getData().get("markets.market" + marketNumber + ".ortaklik.sonSayi");
+                        int sonSayi = (int) manager.getData().get("markets.market" + marketNumber + ".ortaklik.sonSayi");
                         List<String> ortaklar = new ArrayList<>();
                         for (int j = 0; j < sonSayi; j++) {
-                           ortaklar.add(this.manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + j));
+                           ortaklar.add(manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + j));
                         }
                         int silinecekSira = 0;
                         int maks = ortaklar.size();
                         if (ortaklar.contains(silinecek.getName())) {
                            for (int k = 0; k < ortaklar.size(); k++) {
-                              if (this.manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + k).equalsIgnoreCase(silinecek.getName())) {
+                              if (manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + k).equalsIgnoreCase(silinecek.getName())) {
                                  silinecekSira = k;
                               }
                            }
-                           if (this.manager.getData().getInt("markets.market" + marketNumber + ".ortaklik.sonSayi") != 1) {
-                              this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.ortaklar." + silinecekSira, this.manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + maks));
-                              this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.sonSayi", sonSayi - 1);
-                              this.manager.saveData();
+                           if (manager.getData().getInt("markets.market" + marketNumber + ".ortaklik.sonSayi") != 1) {
+                              manager.getData().set("markets.market" + marketNumber + ".ortaklik.ortaklar." + silinecekSira, manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + maks));
+                              manager.getData().set("markets.market" + marketNumber + ".ortaklik.sonSayi", sonSayi - 1);
+                              manager.saveData();
                            } else {
-                              this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.ortaklar", null);
-                              this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.sonSayi", 0);
+                              manager.getData().set("markets.market" + marketNumber + ".ortaklik.ortaklar", null);
+                              manager.getData().set("markets.market" + marketNumber + ".ortaklik.sonSayi", 0);
                               manager.saveData();
                            }
                            p.sendMessage(MessageUtil.ORTAK_SILINDI.replaceAll("%player%", silinecek.getName()));
@@ -527,16 +527,16 @@ public class MarketCommand implements CommandExecutor {
 
                         if(MarketUtil.checkAllOrtaks(p)) {
                            int marketNumber = MarketUtil.marketsNumber;
-                           Player marketSahibi = Bukkit.getPlayer(this.manager.getData().getString("markets.market" + marketNumber + ".name"));
+                           Player marketSahibi = Bukkit.getPlayer(manager.getData().getString("markets.market" + marketNumber + ".name"));
                            p.sendMessage(MessageUtil.MARKET_SAHIBI);
                            p.sendMessage(MessageUtil.MARKET_SAHIP.replaceAll("%player%", marketSahibi.getName()));
                         } else {
                            p.sendMessage(MessageUtil.MEVCUT_ORTAKLARIN);
                            int marketNumber = MarketUtil.getMarketNumber(p);
-                           int sonSayi = this.manager.getData().getInt("markets.market" + marketNumber + ".ortaklik.sonSayi");
+                           int sonSayi = manager.getData().getInt("markets.market" + marketNumber + ".ortaklik.sonSayi");
                            List<String> ortaklar = new ArrayList<>();
                            for (int z = 0; z < sonSayi; z++) {
-                              ortaklar.add(this.manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + z));
+                              ortaklar.add(manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + z));
                            }
                            for (int k = 0; k < ortaklar.size(); k++) {
                               p.sendMessage(MessageUtil.ORTAK_SIRALAMASI.replaceAll("%number%", String.valueOf(k)).replaceAll("%player%", ortaklar.get(k)));
@@ -563,27 +563,27 @@ public class MarketCommand implements CommandExecutor {
                         if (MarketUtil.checkAllOrtaks(p)) {
                            int marketNumber = MarketUtil.marketsNumber;
                            Player silinecek = p;
-                           Player marketSahibi = Bukkit.getPlayer(this.manager.getData().getString("markets.market" + marketNumber + ".name"));
-                           int sonSayi = (int) this.manager.getData().get("markets.market" + marketNumber + ".ortaklik.sonSayi");
+                           Player marketSahibi = Bukkit.getPlayer(manager.getData().getString("markets.market" + marketNumber + ".name"));
+                           int sonSayi = (int) manager.getData().get("markets.market" + marketNumber + ".ortaklik.sonSayi");
                            List<String> ortaklar = new ArrayList<>();
                            for (int j = 0; j < sonSayi; j++) {
-                              ortaklar.add(this.manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + j));
+                              ortaklar.add(manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + j));
                            }
                            int silinecekSira = 0;
                            int maks = ortaklar.size();
                            if (ortaklar.contains(silinecek.getName())) {
                               for (int k = 0; k < ortaklar.size(); k++) {
-                                 if (this.manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + k).equalsIgnoreCase(silinecek.getName())) {
+                                 if (manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + k).equalsIgnoreCase(silinecek.getName())) {
                                     silinecekSira = k;
                                  }
                               }
-                              if (this.manager.getData().getInt("markets.market" + marketNumber + ".ortaklik.sonSayi") != 1) {
-                                 this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.ortaklar." + silinecekSira, this.manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + maks));
-                                 this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.sonSayi", sonSayi - 1);
-                                 this.manager.saveData();
+                              if (manager.getData().getInt("markets.market" + marketNumber + ".ortaklik.sonSayi") != 1) {
+                                 manager.getData().set("markets.market" + marketNumber + ".ortaklik.ortaklar." + silinecekSira, manager.getData().getString("markets.market" + marketNumber + ".ortaklik.ortaklar." + maks));
+                                 manager.getData().set("markets.market" + marketNumber + ".ortaklik.sonSayi", sonSayi - 1);
+                                 manager.saveData();
                               } else {
-                                 this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.ortaklar", null);
-                                 this.manager.getData().set("markets.market" + marketNumber + ".ortaklik.sonSayi", 0);
+                                 manager.getData().set("markets.market" + marketNumber + ".ortaklik.ortaklar", null);
+                                 manager.getData().set("markets.market" + marketNumber + ".ortaklik.sonSayi", 0);
                                  manager.saveData();
                               }
                               silinecek.sendMessage(MessageUtil.AYRILDINIZ.replaceAll("%player%", marketSahibi.getName()));
@@ -612,16 +612,16 @@ public class MarketCommand implements CommandExecutor {
                            if(MessageUtil.ORTAKLIK) {
                               p.sendMessage(MessageUtil.ORTAKLIK_ZATEN_AKTIF);
                            } else {
-                              this.manager.getConfig().set("Settings.Ortaklik", true);
-                              this.manager.saveConfig();
+                              manager.getConfig().set("Settings.Ortaklik", true);
+                              manager.saveConfig();
                               p.sendMessage(MessageUtil.ORTAKLIKD_AKTIF);
                            }
                         } else if(args[1].equalsIgnoreCase("false")) {
                            if(!MessageUtil.ORTAKLIK) {
                               p.sendMessage(MessageUtil.ORTAKLIK_ZATEN_KAPALI);
                            } else {
-                              this.manager.getConfig().set("Settings.Ortaklik", false);
-                              this.manager.saveConfig();
+                              manager.getConfig().set("Settings.Ortaklik", false);
+                              manager.saveConfig();
                               p.sendMessage(MessageUtil.ORTAKLIKD_PASIF);
                            }
                         } else {
@@ -642,8 +642,8 @@ public class MarketCommand implements CommandExecutor {
                         //p.sendMessage(MessageUtil.RELOAD_KULLANIM);
                         //return true;
                      //}
-                     this.manager.reloadConfig();
-                     this.manager.reloadItemConfig();
+                     manager.reloadConfig();
+                     manager.reloadItemConfig();
                      MessageUtil.loadMessages();
                      new TranslationMapping(T3SL4Market.getPlugin());
                      p.sendMessage(MessageUtil.RELOAD);
@@ -652,8 +652,8 @@ public class MarketCommand implements CommandExecutor {
                      sender.sendMessage(MessageUtil.PERMERROR);
                   }
                } else {
-                  this.manager.reloadConfig();
-                  this.manager.reloadItemConfig();
+                  manager.reloadConfig();
+                  manager.reloadItemConfig();
                   MessageUtil.loadMessages();
                   new TranslationMapping(T3SL4Market.getPlugin());
                   sender.sendMessage(MessageUtil.RELOAD);

@@ -2,9 +2,11 @@ package me.t3sl4.market;
 
 import me.t3sl4.market.commands.MarketCommand;
 import me.t3sl4.market.listeners.InventoryClickListener;
+import me.t3sl4.market.listeners.JoinListener;
 import me.t3sl4.market.util.MessageUtil;
 import me.t3sl4.market.util.SettingsManager;
 import me.t3sl4.market.util.TranslationMapping;
+import me.t3sl4.market.util.UpdateChecker;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -32,6 +34,7 @@ public class T3SL4Market extends JavaPlugin {
 
    public void onDisable() {
       plugin = null;
+      manager.saveData();
    }
 
    public void initialize() {
@@ -44,6 +47,7 @@ public class T3SL4Market extends JavaPlugin {
          this.registerListeners();
          this.registerCommands();
          count = manager.getData().getInt("market_sayisi");
+         manager.reloadData();
          MessageUtil.loadMessages();
       }
    }
@@ -59,6 +63,7 @@ public class T3SL4Market extends JavaPlugin {
 
    public void registerListeners() {
       Bukkit.getPluginManager().registerEvents(new InventoryClickListener(), this);
+      Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
    }
 
    public void registerCommands() {
