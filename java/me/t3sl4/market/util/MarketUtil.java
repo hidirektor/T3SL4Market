@@ -4,11 +4,15 @@ import me.t3sl4.market.gui.Gui;
 import me.t3sl4.market.T3SL4Market;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class MarketUtil {
    static SettingsManager manager = SettingsManager.getInstance();
    private static int slot;
    public static int marketsNumber;
+   static ItemStack item;
+   private static ItemMeta oldItem;
 
 
    public static boolean hasMarket(Player p) {
@@ -90,5 +94,74 @@ public class MarketUtil {
 
          }
       }
+   }
+
+   public static void esyaKaldir(Player p, int max, int min) {
+      int geriAlinan = 0;
+      for (int i = 0; i <= T3SL4Market.count; ++i) {
+         if (manager.getData().isString("markets.market" + i + ".name") && manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(p.getName())) {
+            int n = min;
+            while (n <= max) {
+               if (manager.getData().isConfigurationSection("markets.market" + i + ".slot" + n)) {
+                  slot = n;
+                  if (manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
+                     if(manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen").equalsIgnoreCase(p.getName())) {
+                        item = manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
+                        item.setItemMeta(oldItem);
+                        p.getInventory().addItem(new ItemStack[]{item});
+                        geriAlinan++;
+                        manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
+                        manager.saveData();
+                     }
+                  }
+                  ++n;
+               } else {
+                  ++n;
+               }
+            }
+         }
+      }
+
+      if(geriAlinan != 0) {
+         p.sendMessage(MessageUtil.MARKETTEN_ITEM_KALDIRILDI.replaceAll("%amount%", String.valueOf(geriAlinan)));
+      } else {
+         p.sendMessage(MessageUtil.MARKETTEN_ITEM_KALDIRILAMADI);
+      }
+   }
+
+   public static void tekEsyaKaldir(Player p, int slot) {
+      int geriAlinan = 0;
+      for (int i = 0; i <= T3SL4Market.count; ++i) {
+         if (manager.getData().isString("markets.market" + i + ".name") && manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(p.getName()) && manager.getData().isConfigurationSection("markets.market" + i + ".slot" + slot)) {
+            if (manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
+               if(manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen").equalsIgnoreCase(p.getName())) {
+                  item = manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
+                  item.setItemMeta(oldItem);
+                  p.getInventory().addItem(new ItemStack[]{item});
+                  geriAlinan++;
+                  manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
+                  manager.saveData();
+               }
+            } else {
+               p.sendMessage(MessageUtil.ESYAYI_SEN_EKLEMEDIN);
+            }
+         }
+      }
+      if(geriAlinan == 0) {
+         p.sendMessage(MessageUtil.ESYA_YOK);
+      }
+   }
+
+   public static boolean isInteger(String s) {
+      boolean isValidInteger = false;
+      try
+      {
+         Integer.parseInt(s);
+         isValidInteger = true;
+      }
+      catch (NumberFormatException ex)
+      {
+      }
+      return isValidInteger;
    }
 }

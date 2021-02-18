@@ -35,6 +35,8 @@ public class MessageUtil {
    public static String ORTAKLIK_ZATEN_KAPALI;
    public static String ZATEN_ORTAKSIN;
    public static String ESYAYI_SEN_EKLEMEDIN;
+   public static String SAYI;
+   public static String ESYA_YOK;
    public static String MARKET_YARATILDI;
    public static String ITEM_KALDIRDILDI;
    public static String ITEM_EKLENDI;
@@ -104,6 +106,8 @@ public class MessageUtil {
       ORTAKLIK_ZATEN_KAPALI = PREFIX + colorize(manager.getConfig().getString("Messages.ErrorMessages.OrtaklikZatenKapali"));
       ZATEN_ORTAKSIN = PREFIX + colorize(manager.getConfig().getString("Messages.ErrorMessages.ZatenOrtaksin"));
       ESYAYI_SEN_EKLEMEDIN = PREFIX + colorize(manager.getConfig().getString("Messages.ErrorMessages.EsyayiSenEklemedin"));
+      SAYI = PREFIX + colorize(manager.getConfig().getString("Messages.ErrorMessages.Sayi"));
+      ESYA_YOK = PREFIX + colorize(manager.getConfig().getString("Messages.ErrorMessages.EsyaYok"));
       MARKET_YARATILDI = PREFIX + colorize(manager.getConfig().getString("Messages.SuccessMessages.MarketYaratildi"));
       ITEM_KALDIRDILDI = PREFIX + colorize(manager.getConfig().getString("Messages.SuccessMessages.ItemKaldirildi"));
       ITEM_EKLENDI = PREFIX + colorize(manager.getConfig().getString("Messages.SuccessMessages.ItemEklendi"));

@@ -14,6 +14,7 @@ Info:
   - '&e/market aç <Oyuncu> &c> &aKendi Marketini Ya da Başkasının Marketini Açmanı Sağlar.'
   - '&e/market ekle <Slot> <Fiyat> &c> &aElinde ki Eşyayı Marketine Eklemeni Sağlar.'
   - '&e/market kaldir <Slot> &c> &aBelirlediğin Slotta ki Eşyayı Sana Geri Verir.'
+  - '&e/market kaldir satir <Satır> &c> &aBelirlediğin Satırdaki Tüm Eşyalarını Sana Geri Verir.'
   - '&e/market kaldir hepsi &c> &aMarketinde ki Tüm Eşyaları Kaldırmanı Sağlar.'
   - '&e/market ortaklik &c> &aMarketindeki Ortaklık Sistemini Aktif Eder ya da Kapatır.'
   - '&e/market ortakekle <Oyuncu> &aMarketine Ortak Ekler.'
@@ -45,6 +46,8 @@ Messages:
     OrtaklikZatenKapali: '&eOrtaklık Sistemi Zaten &cKapalı&e.'
     ZatenOrtaksin: '&c%player% &eAdlı Oyuncunun Marketine Zaten Ortaksın.'
     EsyayiSenEklemedin: '&eBelirttiğin Slottaki Eşya Sana Ait Değil.'
+    Sayi: '&eLütfen Geçerli Bir Sayı Gir!'
+    EsyaYok: '&eDostum Maalesef Seçtiğin Slotta Bir Eşya Yok.'
   SuccessMessages:
     MarketYaratildi: '&aMarketin Başarıyla Oluşturuldu'
     MarketTemizlendi: '&aMarketini Başarıyla Temizledin'

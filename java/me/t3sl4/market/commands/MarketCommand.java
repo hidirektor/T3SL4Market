@@ -285,71 +285,48 @@ public class MarketCommand implements CommandExecutor {
                if (sender instanceof Player) {
                   Player p = (Player) sender;
                   if (p.isOp() || p.hasPermission("t3sl4market.kaldir")) {
-                     if (args.length != 2) {
+                     if (args.length > 3) {
                         p.sendMessage(MessageUtil.KALDIRMA_KULLANIM);
                         return true;
                      }
 
-                     for (i = 0; i <= T3SL4Market.count; ++i) {
-                        if (manager.getData().isString("markets.market" + i + ".name") && manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(p.getName()) && manager.getData().isConfigurationSection("markets.market" + i + ".slot" + args[1])) {
-                           try {
-                              slot = Integer.parseInt(args[1]);
-                           } catch (Exception var12) {
-                              p.sendMessage(MessageUtil.HATA);
-                              return true;
-                           }
-
-                           if (manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
-                              if(manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen").equalsIgnoreCase(p.getName())) {
-                                 item = manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
-                                 item.setItemMeta(oldItem);
-                                 p.getInventory().addItem(new ItemStack[]{item});
-                                 manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
-                                 manager.saveData();
-                              } else {
-                                 p.sendMessage(MessageUtil.ESYAYI_SEN_EKLEMEDIN);
-                              }
-                           }
-                        }
-                     }
-
-                     if (args[1].equalsIgnoreCase("satır")) {
-
-                     }
-
-                     if (args[1].equalsIgnoreCase("hepsi")) {
-                        int geriAlinan = 0;
-                        for (i = 0; i <= T3SL4Market.count; ++i) {
-                           if (manager.getData().isString("markets.market" + i + ".name") && manager.getData().getString("markets.market" + i + ".name").equalsIgnoreCase(p.getName())) {
-                              n = 0;
-                              while (n <= 54) {
-                                 if (manager.getData().isConfigurationSection("markets.market" + i + ".slot" + n)) {
-                                    slot = n;
-                                    if (manager.getData().isItemStack("markets.market" + i + ".slot" + slot + ".item")) {
-                                       if(manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen").equalsIgnoreCase(p.getName())) {
-                                          item = manager.getData().getItemStack("markets.market" + i + ".slot" + slot + ".item");
-                                          item.setItemMeta(oldItem);
-                                          p.getInventory().addItem(new ItemStack[]{item});
-                                          geriAlinan++;
-                                          manager.getData().set("markets.market" + i + ".slot" + slot, (Object) null);
-                                          manager.saveData();
-                                       }
-                                    }
-                                    ++n;
-                                 } else {
-                                    ++n;
-                                 }
-                              }
-                           }
-                        }
-
-                        if(geriAlinan != 0) {
-                           p.sendMessage(MessageUtil.MARKETTEN_ITEM_KALDIRILDI.replaceAll("%amount%", String.valueOf(geriAlinan)));
-                        } else {
-                           p.sendMessage(MessageUtil.MARKETTEN_ITEM_KALDIRILAMADI);
-                        }
+                     if(MarketUtil.isInteger(args[1])) {
+                        int slot = Integer.parseInt(args[1]);
+                        MarketUtil.tekEsyaKaldir(p, slot);
                         return true;
+                     } else if(args[1].equalsIgnoreCase("satır")) {
+                        if(MarketUtil.isInteger(args[2])) {
+                           int removingLine = Integer.parseInt(args[2]);
+                           switch(removingLine) {
+                              case 1:
+                                 MarketUtil.esyaKaldir(p, 8, 0);
+                                 break;
+                              case 2:
+                                 MarketUtil.esyaKaldir(p, 17, 9);
+                                 break;
+                              case 3:
+                                 MarketUtil.esyaKaldir(p, 26, 18);
+                                 break;
+                              case 4:
+                                 MarketUtil.esyaKaldir(p, 35, 27);
+                                 break;
+                              case 5:
+                                 MarketUtil.esyaKaldir(p, 44, 36);
+                                 break;
+                              case 6:
+                                 MarketUtil.esyaKaldir(p, 53, 45);
+                                 break;
+                           }
+                        } else {
+                           p.sendMessage(MessageUtil.SAYI);
+                        }
+                     } else if(args[1].equalsIgnoreCase("hepsi")) {
+                        MarketUtil.esyaKaldir(p, 53, 0);
+                        return true;
+                     } else {
+                        p.sendMessage(MessageUtil.KALDIRMA_KULLANIM);
                      }
+
                   } else {
                      p.sendMessage(MessageUtil.PERMERROR);
                   }
