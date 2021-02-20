@@ -14,87 +14,111 @@ public class SettingsManager {
    static SettingsManager instance = new SettingsManager();
    private Plugin p;
    private FileConfiguration config;
-   private File cfile;
+   private File configfile;
    private FileConfiguration data;
-   private File dfile;
+   private File datafile;
+   private FileConfiguration depo;
+   private File depofile;
    private FileConfiguration item;
    private File itemfile;
 
    public void setup(Plugin p) {
-      cfile = new File(p.getDataFolder(), "config.yml");
-
       if(!p.getDataFolder().exists()) {
          p.getDataFolder().mkdir();
       }
-      if(!cfile.exists()) {
-         p.saveDefaultConfig();
-      }
-      config = p.getConfig();
+      create("config", p);
+      create("data", p);
+      create("item", p);
+      create("depo", p);
+   }
 
-      this.dfile = new File(p.getDataFolder(), "data.yml");
-      if (!this.dfile.exists()) {
+   public FileConfiguration get(String file) {
+      if(file.equalsIgnoreCase("config")) {
+         return config;
+      } else if(file.equalsIgnoreCase("data")) {
+         return data;
+      } else if(file.equalsIgnoreCase("item")) {
+         return item;
+      } else if(file.equalsIgnoreCase("depo")) {
+         return depo;
+      }
+      return null;
+   }
+
+   public void save(String file) {
+      if(file.equalsIgnoreCase("config")) {
          try {
-            this.dfile.createNewFile();
-         } catch (IOException var3) {
-            Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create data.yml!");
+            config.save(configfile);
+         } catch (IOException e) {
+            Bukkit.getServer().getLogger().severe(ChatColor.RED + "Config.yml kaydedilemedi!");
+         }
+      } else if(file.equalsIgnoreCase("data")) {
+         try {
+            this.data.save(this.datafile);
+         } catch (IOException var2) {
+            Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save data.yml!");
+         }
+      } else if(file.equalsIgnoreCase("item")) {
+         try {
+            item.save(itemfile);
+         } catch (IOException e) {
+            Bukkit.getServer().getLogger().severe(ChatColor.RED + "esyalar.yml kaydedilemedi!");
+         }
+      } else if(file.equalsIgnoreCase("depo")) {
+         try {
+            depo.save(depofile);
+         } catch (IOException e) {
+            Bukkit.getServer().getLogger().severe(ChatColor.RED + "depo.yml kaydedilemedi!");
          }
       }
-      this.data = YamlConfiguration.loadConfiguration(this.dfile);
-
-      this.itemfile = new File(p.getDataFolder(), "esyalar.yml");
-      if(!itemfile.exists()) {
-         p.saveResource("esyalar.yml", false);
-      }
-      item = YamlConfiguration.loadConfiguration(itemfile);
    }
 
-   public FileConfiguration getConfig() {
-      return config;
-   }
-
-   public void saveConfig() {
-      try {
-         config.save(cfile);
-      } catch (IOException e) {
-         Bukkit.getServer().getLogger().severe(ChatColor.RED + "Config.yml kaydedilemedi!");
+   public void reload(String file) {
+      if(file.equalsIgnoreCase("config")) {
+         config = YamlConfiguration.loadConfiguration(configfile);
+      } else if(file.equalsIgnoreCase("data")) {
+         data = YamlConfiguration.loadConfiguration(datafile);
+      } else if(file.equalsIgnoreCase("item")) {
+         item = YamlConfiguration.loadConfiguration(itemfile);
+      } else if(file.equalsIgnoreCase("depo")) {
+         depo = YamlConfiguration.loadConfiguration(depofile);
       }
    }
 
-   public void reloadConfig() {
-      config = YamlConfiguration.loadConfiguration(cfile);
-   }
-
-   public FileConfiguration getData() {
-      return this.data;
-   }
-
-   public void saveData() {
-      try {
-         this.data.save(this.dfile);
-      } catch (IOException var2) {
-         Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save data.yml!");
+   public void create(String file, Plugin p) {
+      if(file.equalsIgnoreCase("config")) {
+         configfile = new File(p.getDataFolder(), "config.yml");
+         if(!configfile.exists()) {
+            p.saveDefaultConfig();
+         }
+         config = p.getConfig();
+      } else if(file.equalsIgnoreCase("data")) {
+         datafile = new File(p.getDataFolder(), "data.yml");
+         if (!datafile.exists()) {
+            try {
+               datafile.createNewFile();
+            } catch (IOException var3) {
+               Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create data.yml!");
+            }
+         }
+         data = YamlConfiguration.loadConfiguration(datafile);
+      } else if(file.equalsIgnoreCase("item")) {
+         itemfile = new File(p.getDataFolder(), "esyalar.yml");
+         if(!itemfile.exists()) {
+            p.saveResource("esyalar.yml", false);
+         }
+         item = YamlConfiguration.loadConfiguration(itemfile);
+      } else if(file.equalsIgnoreCase("depo")) {
+         depofile = new File(p.getDataFolder(), "depo.yml");
+         if (!this.depofile.exists()) {
+            try {
+               this.depofile.createNewFile();
+            } catch (IOException var3) {
+               Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create depo.yml!");
+            }
+         }
+         depo = YamlConfiguration.loadConfiguration(this.depofile);
       }
-
-   }
-
-   public void reloadData() {
-      this.data = YamlConfiguration.loadConfiguration(this.dfile);
-   }
-
-   public FileConfiguration getItemConfig() {
-      return item;
-   }
-
-   public void saveItemConfig() {
-      try {
-         item.save(itemfile);
-      } catch (IOException e) {
-         Bukkit.getServer().getLogger().severe(ChatColor.RED + "esyalar.yml kaydedilemedi!");
-      }
-   }
-
-   public void reloadItemConfig() {
-      item = YamlConfiguration.loadConfiguration(itemfile);
    }
 
    public PluginDescriptionFile getDesc() {

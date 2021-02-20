@@ -34,7 +34,7 @@ public class T3SL4Market extends JavaPlugin {
 
    public void onDisable() {
       plugin = null;
-      manager.saveData();
+      manager.save("data");
    }
 
    public void initialize() {
@@ -46,8 +46,8 @@ public class T3SL4Market extends JavaPlugin {
          new TranslationMapping(this);
          this.registerListeners();
          this.registerCommands();
-         count = manager.getData().getInt("market_sayisi");
-         manager.reloadData();
+         count = manager.get("data").getInt("market_sayisi");
+         manager.reload("data");
          MessageUtil.loadMessages();
       }
    }

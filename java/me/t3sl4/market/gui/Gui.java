@@ -18,7 +18,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class Gui {
+public class GUI {
    static int price;
    static Inventory inv;
    static Player p;
@@ -30,8 +30,8 @@ public class Gui {
       problems = new ArrayList(Arrays.asList(Material.ENCHANTED_BOOK, Material.MONSTER_EGG, Material.POTION, Material.MOB_SPAWNER));
    }
 
-   public Gui(String s) {
-      Gui.s = s;
+   public GUI(String s) {
+      GUI.s = s;
       String message = MessageUtil.MARKET_ISMI.replace("%player%", s);
       inv = Bukkit.createInventory((InventoryHolder)null, 54, message);
    }
@@ -48,10 +48,10 @@ public class Gui {
       String ekleyenIsim = null;
       if (item != null) {
          for(int i = 0; i <= T3SL4Market.count; ++i) {
-            ekleyenIsim = manager.getData().getString("markets.market" + i + ".slot" + slot + ".ekleyen");
-            if (manager.getData().isString("markets.market" + i + ".name") && manager.getData().getString("markets.market" + i + ".name").contains(s) && manager.getData().isSet("markets.market" + i + ".slot" + slot + ".fiyat")) {
+            ekleyenIsim = manager.get("data").getString("markets.market" + i + ".slot" + slot + ".ekleyen");
+            if (manager.get("data").isString("markets.market" + i + ".name") && manager.get("data").getString("markets.market" + i + ".name").contains(s) && manager.get("data").isSet("markets.market" + i + ".slot" + slot + ".fiyat")) {
                try {
-                  price = Integer.parseInt(manager.getData().getString("markets.market" + i + ".slot" + slot + ".fiyat"));
+                  price = Integer.parseInt(manager.get("data").getString("markets.market" + i + ".slot" + slot + ".fiyat"));
                } catch (Exception var10) {
                   p.sendMessage(MessageUtil.HATA);
                   return;
@@ -65,13 +65,13 @@ public class Gui {
          item.setItemMeta(meta);
 
          for(int i = 0; i <= T3SL4Market.count; ++i) {
-            if (manager.getData().isString("markets.market" + i + ".name") && manager.getData().getString("markets.market" + i + ".name").contains(s) && manager.getData().isConfigurationSection("markets.market" + i + ".slot" + slot) && manager.getData().isConfigurationSection("markets.market" + i + ".slot" + slot + ".enchants")) {
-               int q = manager.getData().getInt("markets.market" + i + ".slot" + slot + ".enchant_sayisi");
+            if (manager.get("data").isString("markets.market" + i + ".name") && manager.get("data").getString("markets.market" + i + ".name").contains(s) && manager.get("data").isConfigurationSection("markets.market" + i + ".slot" + slot) && manager.get("data").isConfigurationSection("markets.market" + i + ".slot" + slot + ".enchants")) {
+               int q = manager.get("data").getInt("markets.market" + i + ".slot" + slot + ".enchant_sayisi");
 
                for(int l = 0; l < q; ++l) {
-                  if (manager.getData().isString("markets.market" + i + ".slot" + slot + ".enchants.enchant" + l + ".name")) {
-                     String enchant_name = manager.getData().getString("markets.market" + i + ".slot" + slot + ".enchants.enchant" + l + ".name");
-                     int enchant_level = manager.getData().getInt("markets.market" + i + ".slot" + slot + ".enchants.enchant" + l + ".level");
+                  if (manager.get("data").isString("markets.market" + i + ".slot" + slot + ".enchants.enchant" + l + ".name")) {
+                     String enchant_name = manager.get("data").getString("markets.market" + i + ".slot" + slot + ".enchants.enchant" + l + ".name");
+                     int enchant_level = manager.get("data").getInt("markets.market" + i + ".slot" + slot + ".enchants.enchant" + l + ".level");
                      Enchantment enchant = Enchantment.getByName(enchant_name);
                      if (item.getType() == Material.ENCHANTED_BOOK) {
                         EnchantmentStorageMeta emeta = (EnchantmentStorageMeta)item.getItemMeta();

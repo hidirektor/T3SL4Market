@@ -5,6 +5,7 @@ Settings:
   Adet: '&eMiktarı: &7%p '
   Slot: '&eSlot: &7%slot% '
   EsyaSahibi: '&eEşya Sahibi: &7%player%'
+  DepoIsmi: '&eDepo: &a%player%'
   SadeceOpInfoSatiri: 2
   VergiYuzdesi: 5
   Ortaklik: true

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.UUID;
 
 import me.t3sl4.market.T3SL4Market;
-import me.t3sl4.market.gui.Gui;
+import me.t3sl4.market.gui.GUI;
 import me.t3sl4.market.util.MarketUtil;
 import me.t3sl4.market.util.MessageUtil;
 import me.t3sl4.market.util.SettingsManager;
@@ -18,7 +18,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -34,8 +33,8 @@ public class InventoryClickListener implements Listener {
       ItemStack item = e.getCurrentItem();
       int price = 0;
       Economy econ = T3SL4Market.getEconomy();
-      if (e.getInventory() != null && Gui.getInventory() != null &&
-              e.getInventory().getName().equalsIgnoreCase(Gui.getInventory().getName())) {
+      if (e.getInventory() != null && GUI.getInventory() != null &&
+              e.getInventory().getName().equalsIgnoreCase(GUI.getInventory().getName())) {
          if (e.getCurrentItem() == null)
             return;
          if (e.getCurrentItem() == new ItemStack(Material.AIR))
@@ -46,7 +45,7 @@ public class InventoryClickListener implements Listener {
          if(MessageUtil.ORTAKLIK) {
             if(MarketUtil.checkAllOrtaks(Bukkit.getPlayer(e.getWhoClicked().getName()))) {
                int marketNumber = MarketUtil.marketsNumber;
-               Player marketSahibi = Bukkit.getPlayer(manager.getData().getString("markets.market" + marketNumber + ".name"));
+               Player marketSahibi = Bukkit.getPlayer(manager.get("data").getString("markets.market" + marketNumber + ".name"));
                if(e.getInventory().getName().contains(marketSahibi.getName())) {
                   p.sendMessage(MessageUtil.KENDI_MARKETINDEN_ITEM_ALAMAZSIN);
                   return;
@@ -66,7 +65,7 @@ public class InventoryClickListener implements Listener {
          }
          if (e.getCurrentItem().hasItemMeta()) {
             amount = item.getAmount();
-            String priceText = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', manager.getConfig().getString("FIYAT")));
+            String priceText = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', manager.get("config").getString("FIYAT")));
             String priceLore = ChatColor.stripColor(item.getItemMeta().getLore().get(2));
             String step1 = priceLore.substring(priceText.indexOf('%') - 1);
             int lastDigit = 0;
@@ -93,14 +92,14 @@ public class InventoryClickListener implements Listener {
                   meta.setDisplayName(x.getDisplayName());
                   item.setItemMeta(meta);
                   playerInventory.addItem(new ItemStack[] { item });
-                  Gui.getInventory().setItem(e.getSlot(), null);
+                  GUI.getInventory().setItem(e.getSlot(), null);
                   for (int j = 0; j <= T3SL4Market.count; j++) {
-                     if (manager.getData().isString("markets.market" + j + ".name") &&
-                             manager.getData().getString("markets.market" + j + ".name").equalsIgnoreCase(Gui.getString())) {
-                        paraYatirilacakOyuncu = Bukkit.getOfflinePlayer(manager.getData().getString("markets.market" + j + ".slot" + e.getSlot() + ".ekleyen"));
-                        uuid = manager.getData().getString("markets.market" + j + ".uuid");
-                        manager.getData().set("markets.market" + j + ".slot" + e.getSlot(), null);
-                        manager.saveData();
+                     if (manager.get("data").isString("markets.market" + j + ".name") &&
+                             manager.get("data").getString("markets.market" + j + ".name").equalsIgnoreCase(GUI.getString())) {
+                        paraYatirilacakOyuncu = Bukkit.getOfflinePlayer(manager.get("data").getString("markets.market" + j + ".slot" + e.getSlot() + ".ekleyen"));
+                        uuid = manager.get("data").getString("markets.market" + j + ".uuid");
+                        manager.get("data").set("markets.market" + j + ".slot" + e.getSlot(), null);
+                        manager.save("data");
                      }
                   }
                   try {

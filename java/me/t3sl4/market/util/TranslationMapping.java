@@ -18,9 +18,9 @@ public class TranslationMapping {
 
    public TranslationMapping(JavaPlugin plugin) {
       plugin.getLogger().info("Loading TranslationMapping...");
-      manager.saveItemConfig();
-      manager.reloadItemConfig();
-      ConfigurationSection blocksection = manager.getItemConfig().getConfigurationSection("mapping");
+      manager.save("item");
+      manager.reload("item");
+      ConfigurationSection blocksection = manager.get("item").getConfigurationSection("mapping");
       Iterator var4 = blocksection.getKeys(false).iterator();
 
       while(var4.hasNext()) {
@@ -48,7 +48,7 @@ public class TranslationMapping {
                Iterator var11;
                String mckey;
                if (template != null) {
-                  damagesection = manager.getItemConfig().getConfigurationSection("templates." + template);
+                  damagesection = manager.get("item").getConfigurationSection("templates." + template);
                   if (damagesection != null) {
                      for(var11 = damagesection.getKeys(false).iterator(); var11.hasNext(); transmap.put(matkey + ":" + damage, mckey)) {
                         damage = (String)var11.next();
@@ -82,7 +82,7 @@ public class TranslationMapping {
    }
 
    public static String getKey(ItemStack item) {
-      manager.reloadItemConfig();
+      manager.reload("item");
       Material mat = item.getType();
       if (mat == Material.SKULL_ITEM && item.getItemMeta() instanceof SkullMeta && ((SkullMeta)item.getItemMeta()).getOwner() != null) {
          return "item.skull.player.name";
